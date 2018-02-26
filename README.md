@@ -16,6 +16,6 @@ class Class(object):
                 for key, value in dictionary.iteritems():
                     setattr(self, key, value)
         except Exception as err:
-            print("Failed to get database.ini data: %s" % (str(err)))
+            print("Failed to get config file info: %s" % (str(err)))
             sys.exit(1)
 ```
