@@ -2,6 +2,7 @@
 
 import sys
 import ConfigParser
+import numbers
 
 
 def initiate(configfile, *args):
@@ -14,8 +15,10 @@ def initiate(configfile, *args):
                 params = parser.items(arg)
                 gendict = {}
                 for param in params:
-                    if param[1].isdigit():
+                    if isinstance(param[1], numbers.Integral):
                         gendict[param[0]] = parser.getint(arg, param[0])
+                    elif isinstance(param[1], float):
+                        gendict[param[0]] = parser.getfloat(arg, param[0])
                     elif isinstance(param[1], bool):
                         gendict[param[0]] = parser.getboolean(arg, param[0])
                     else:
